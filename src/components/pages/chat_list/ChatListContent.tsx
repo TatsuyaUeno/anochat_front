@@ -31,7 +31,7 @@ const ChatListContent:React.FC<Props> = React.memo(() => {
         .catch(err => {
             console.error(err);
         });
-    });
+    }, []);
 
     // チャットリストコンポーネントに渡すメソッド
     const selectChatList = (row: number) => {
