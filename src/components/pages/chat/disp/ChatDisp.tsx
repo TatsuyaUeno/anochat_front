@@ -13,7 +13,7 @@ type Props = {
 const ChatDisp: React.FC<Props> = React.memo(( {chatMessages} ) => {
 
     const messages = chatMessages.map((chatMessage: {message: string, sort: number}) => 
-        <div css={styles["chat"]}>
+        <div css={styles["chat"]} style={{ whiteSpace: 'pre-wrap' }}>
             { chatMessage.message }
         </div>
     );
@@ -65,7 +65,7 @@ const styles = {
         // 全体
         display: table;
         background-color: #EFF2FD;;
-        border-radius: 30px;
+        border-radius: 18px;
         padding: 0.5rem 1rem;
         margin-right: 1rem;
         margin-bottom: 1rem;

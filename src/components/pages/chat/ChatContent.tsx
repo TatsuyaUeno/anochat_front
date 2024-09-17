@@ -32,6 +32,21 @@ const ChatContent:React.FC<Props> = React.memo(() => {
         // navigation
         const navigate = useNavigate();
 
+        // メッセージ受信ハンドラ
+        socket.onmessage = (event) => {
+            let msg = event.data;
+            const msgParam: ChatMessagesObj = {
+                message: msg,
+                sort: 0
+            }
+
+            if (chatContentList) {
+                setChatContentList([msgParam, ...chatContentList]);
+            } else {
+                setChatContentList([msgParam])
+            }
+        };
+
         /**
          * websocketは副作用の処理なので、useEffectを用いる
          */
@@ -40,12 +55,7 @@ const ChatContent:React.FC<Props> = React.memo(() => {
             socket.onopen = (event) => {
                 console.log("websocket connected!");
             };
-            // メッセージ受信ハンドラ
-            socket.onmessage = (event) => {
-                if (chatContentList) {
-                   setChatContentList([event.data, ...chatContentList]);
-                }
-            };
+
             // 接続終了ハンドラ
             socket.onclose = (event) => {
                 console.log("websocket closed!");
