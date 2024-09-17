@@ -64,7 +64,7 @@ const ChatContent:React.FC<Props> = React.memo(() => {
             const chatListId = selectChatList.chatListId;
 
             // チャット取得API呼び出し
-            fetchWrapper(API_PATH.CHAT_GET_MESSAGES, "POST", {chatListId: chatListId})
+            fetchWrapper(API_PATH.CHAT_GET_MESSAGES, "POST", {chatid: chatListId})
             .then(body => {
                 console.log(body);
                 // 初期表示データ設定

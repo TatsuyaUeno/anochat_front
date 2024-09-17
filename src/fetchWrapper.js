@@ -16,7 +16,9 @@ const headers = {
 };
 
 export function fetchWrapper(url, reqMethod, param) {
-    return fetch(url, {method: reqMethod, headers: headers, body: param})
+    var jsonString = JSON.stringify(param);
+    console.log(jsonString)
+    return fetch(url, {method: reqMethod, headers: headers, body: jsonString})
     .catch(err => {
         // ネットワークエラー
         console.error("fetch request error:" + err);

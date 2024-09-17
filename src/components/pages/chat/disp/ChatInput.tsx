@@ -23,8 +23,8 @@ const ChatInput: React.FC<Props> = React.memo(() => {
                 <textarea placeholder="Aa" value={inputChat}
                     onChange={(e) => setInputChat(e.target.value)}>
                 </textarea>
-                <div>
-                    <img src="../static/images/icon_send_button.png" onClick={sendChat}/>
+                <div onClick={ sendChat }>
+                    <img src="../static/images/icon_send_button.png"/>
                 </div>
             </div>
         </div>
